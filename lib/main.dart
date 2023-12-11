@@ -1,4 +1,5 @@
 
+import 'package:earthquake/ui/screens/onboarding/onboarding1.dart';
 import 'package:earthquake/ui/screens/splash/splash.dart';
 import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: OnBoarding1(),
         );
       },
     );
