@@ -51,7 +51,7 @@ class Details extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 9.h,),
-                CustomListTile(title: 'Coordinate', data: '30.8025° E, 26.8206° N', icon: 'coordinate.png', scale: 13.sp,),
+                CustomListTile(title: 'Coordinate', data: '30.8025° E, 26.8206° N', icon: 'coordinate.png', scale: 15.sp,),
 
                 CustomListTile(title: 'Location', data: 'Zürichberg, a wooded hill in District 7.', icon: 'placeholder.png', scale: 12.sp,),
 
@@ -169,17 +169,16 @@ class CustomListTile extends StatelessWidget {
       ),
       ),),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Image.asset('assets/icons/$icon', scale: scale,),
             SizedBox(width: 10.h,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 SizedBox(height: 5.h,),
+
                 Text(title, style:  TextStyle(fontFamily: 'Tajawal', fontSize: 14.sp, color: ColorStyles.grey, fontWeight: FontWeight.bold),maxLines: 1, overflow: TextOverflow.ellipsis, ),
-              SizedBox(height: 5.h,),
+              SizedBox(height: 2.h,),
                 Text(data, style:  TextStyle(fontFamily: 'Tajawal', fontSize: 20.sp, color: ColorStyles.lightRed2), ),
                  SizedBox(height: 10.h,),
               ],
