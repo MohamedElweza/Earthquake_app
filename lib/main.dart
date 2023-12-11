@@ -1,5 +1,4 @@
 import 'package:earthquake/ui/screens/details/details.dart';
-import 'package:earthquake/ui/screens/home/home_screen.dart';
 import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,9 +17,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child){
-        return  MaterialApp(
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: HomeScreen(),
+          home: Details(),
         );
       },
     );
