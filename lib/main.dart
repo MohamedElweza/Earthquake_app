@@ -1,4 +1,5 @@
-import 'package:earthquake/ui/screens/details/details.dart';
+
+import 'package:earthquake/ui/screens/splash/splash.dart';
 import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,16 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize:  Size(MediaQuery.of(context).size.width , MediaQuery.of(context).size.height),
+      designSize:  Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child){
-        return const MaterialApp(
+      builder: (context, child) {
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: Details(),
+          home: SplashScreen(),
         );
       },
     );
   }
 }
-
