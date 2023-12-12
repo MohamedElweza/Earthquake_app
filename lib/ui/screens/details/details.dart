@@ -9,9 +9,9 @@ class Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: ColorStyles.background,
+      backgroundColor:  ColorStyles.green,
       appBar: AppBar(
-        backgroundColor: ColorStyles.background,
+        backgroundColor: ColorStyles.green,
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
@@ -24,7 +24,7 @@ class Details extends StatelessWidget {
         actions: [
           IconButton(onPressed: (){
             _showDialog(context);
-          }, icon: Icon(Icons.read_more))
+          }, icon: Icon(Icons.read_more,color: Colors.black,))
         ],
         title: Text('Earthquake', style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, fontFamily: 'Tajawal', color: ColorStyles.red),),
       ),
