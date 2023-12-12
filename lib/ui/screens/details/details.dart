@@ -1,12 +1,26 @@
 import 'package:earthquake/ui/utils/styles/color_styles.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
+import '../../component/progress_dialpg.dart';
+import '../../component/toast.dart';
 
-class Details extends StatelessWidget {
-  const Details({super.key});
+class Details extends StatefulWidget {
+   Details({super.key});
+
+  @override
+  State<Details> createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
+
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
         child: Scaffold(
       backgroundColor:  ColorStyles.green,
@@ -18,15 +32,16 @@ class Details extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.close,
+              color: ColorStyles.white,
             )),
         actions: [
           IconButton(onPressed: (){
             _showDialog(context);
-          }, icon: Icon(Icons.read_more,color: Colors.black,))
+          }, icon: const Icon(Icons.read_more,color: Colors.white,))
         ],
-        title: Text('Earthquake', style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, fontFamily: 'Tajawal', color: ColorStyles.red),),
+        title: Text('Earthquake', style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, fontFamily: 'Tajawal', color: ColorStyles.brown),),
       ),
           body: SingleChildScrollView(
             child: Column(
@@ -51,6 +66,7 @@ class Details extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 9.h,),
+
                 CustomListTile(title: 'Coordinate', data: '30.8025° E, 26.8206° N', icon: 'coordinate.png', scale: 15.sp,),
 
                 CustomListTile(title: 'Location', data: 'Zürichberg, a wooded hill in District 7.', icon: 'placeholder.png', scale: 12.sp,),
@@ -63,12 +79,13 @@ class Details extends StatelessWidget {
           ),
     ));
   }
+
   Future<void> _showDialog(BuildContext context) async {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: ColorStyles.background,
+          backgroundColor: ColorStyles.green,
           shadowColor: Colors.white12,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0.r),
@@ -137,13 +154,17 @@ class Details extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(address, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp, fontFamily: 'Tajawal', color: ColorStyles.red),),
+                  Text(address, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp, fontFamily: 'Tajawal', color: ColorStyles.lightRed2),),
                   SizedBox(height: 5.h,),
                   Text(response, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Tajawal', color: ColorStyles.white),),
                 ],
               );
   }
+
+
 }
+
+
 
 
 class CustomListTile extends StatelessWidget {
@@ -176,10 +197,9 @@ class CustomListTile extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Text(title, style:  TextStyle(fontFamily: 'Tajawal', fontSize: 14.sp, color: ColorStyles.grey, fontWeight: FontWeight.bold),maxLines: 1, overflow: TextOverflow.ellipsis, ),
               SizedBox(height: 2.h,),
-                Text(data, style:  TextStyle(fontFamily: 'Tajawal', fontSize: 20.sp, color: ColorStyles.lightRed2), ),
+                Text(data, style:  TextStyle(fontFamily: 'Tajawal', fontSize: 19.sp, color: ColorStyles.brown, fontWeight: FontWeight.bold), ),
                  SizedBox(height: 10.h,),
               ],
             ),
@@ -204,8 +224,8 @@ class CustomData extends StatelessWidget {
       children: [
         Image.asset('assets/icons/$icon', scale: 11.sp,),
         SizedBox(height: 10.h),
-        Text(data, style: TextStyle(fontFamily: 'Tajawal', fontSize: 20.sp, color: ColorStyles.red, fontWeight: FontWeight.bold), ),
-        Text(title, style: TextStyle(fontFamily: 'Tajawal', fontSize: 15.sp, color: ColorStyles.grey), ),
+        Text(data, style: TextStyle(fontFamily: 'Tajawal', fontSize: 20.sp, color: ColorStyles.brown, fontWeight: FontWeight.bold), ),
+        Text(title, style: TextStyle(fontFamily: 'Tajawal', fontSize: 15.sp, color: Colors.white70, fontWeight: FontWeight.w900), ),
       ],
     );
   }

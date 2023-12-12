@@ -1,7 +1,5 @@
 import 'dart:async';
-
-import 'package:earthquake/ui/screens/details/details.dart';
-import 'package:earthquake/ui/screens/home/home_screen.dart';
+import 'package:earthquake/ui/screens/onboarding/onboarding.dart';
 import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // Navigate to the next screen after the animation completes
     Timer(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => const OnBoarding()),
       );
     });
   }

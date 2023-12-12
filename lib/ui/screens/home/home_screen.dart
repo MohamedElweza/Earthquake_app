@@ -1,16 +1,58 @@
-// ignore_for_file: dead_code
-
 import 'package:earthquake/ui/screens/details/details.dart';
 import 'package:earthquake/ui/utils/styles/color_styles.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:geolocator/geolocator.dart';
+// import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import 'package:page_transition/page_transition.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  List countryName = ['USA', 'Italy', 'France', 'Egypt'];
-  List cityName = ['USA', 'Italy', 'France', 'Egypt'];
-  var scrollController = ScrollController();
+// import '../../component/progress_dialpg.dart';
+// import '../../component/toast.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({ super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final List countryName = ['USA', 'Italy', 'France', 'Egypt'];
+
+  final List cityName = ['USA', 'Italy', 'France', 'Egypt'];
+
+  final scrollController = ScrollController();
+
+  // String locationAddress = 'حدد الموقع';
+  //
+  // double latitude = 21.3891;
+  //
+  // double longitude = 39.8579;
+  //
+  // Future getPosition() async {
+  //   bool services = await Geolocator.isLocationServiceEnabled();
+  //   if (services == false) {
+  //     CustomToast.lightToast(
+  //         msg: "يرجى تفعيل خدمة الموقع", gravity: ToastGravity.CENTER);
+  //   }
+  //   LocationPermission permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission == LocationPermission.always ||
+  //         permission == LocationPermission.whileInUse) {
+  //       await getLatAndLng().then((value) {
+  //         latitude = value.latitude;
+  //         longitude = value.longitude;
+  //       });
+  //     }
+  //   }
+  // }
+  //
+  // Future<Position> getLatAndLng() async {
+  //   return await Geolocator.getCurrentPosition();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +68,10 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
               )),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))],
+          actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.menu))],
           title: Text(
             'Earthquake',
             style: TextStyle(
@@ -48,18 +90,60 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-
-                    child: Text(
-                      'Recent  earthquakes',
-                      style: TextStyle(
-                          fontSize: 35.sp,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Tajawal',
-                          color: ColorStyles.white),
-                    )),
                 SizedBox(
                   height: 250.h,
+                  // child: InkWell(
+                  //   child: Text(
+                  //     locationAddress,
+                  //     style: TextStyle(color: ColorStyles.white),
+                  //   ),
+                  //   onTap: () async {
+                  //     try {
+                  //       {
+                  //         bool services =
+                  //         await Geolocator.isLocationServiceEnabled();
+                  //         if (services == false) {
+                  //           CustomToast.lightToast(
+                  //               msg: "يرجى تفعيل خدمة الموقع",
+                  //               gravity: ToastGravity.CENTER);
+                  //         } else {
+                  //           LocationPermission permission =
+                  //           await Geolocator.checkPermission();
+                  //           if (permission == LocationPermission.denied ||
+                  //               permission ==
+                  //                   LocationPermission.deniedForever) {
+                  //             permission =
+                  //             await Geolocator.requestPermission();
+                  //           }
+                  //           if (permission == LocationPermission.always ||
+                  //               permission == LocationPermission.whileInUse) {
+                  //             if (context.mounted) {
+                  //               ShowProgressIndicator(context);
+                  //             }
+                  //             await getLatAndLng().then((value) {
+                  //               Navigator.pop(context);
+                  //               latitude = value.latitude;
+                  //               longitude = value.longitude;
+                  //               _showModal(context);
+                  //             });
+                  //           }
+                  //         }
+                  //       }
+                  //     } catch(e){
+                  //       if (kDebugMode) {
+                  //         print(e.toString());
+                  //       }
+                  //     }
+                  //   },
+                  // ),
+                ),
+                Text(
+                  'Recent\nEarthquakes',
+                  style: TextStyle(
+                      fontSize: 35.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Tajawal',
+                      color: ColorStyles.brown),
                 ),
                 ListView.builder(
                     controller: scrollController,
@@ -69,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                     itemCount: countryName.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 16.h),
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -78,13 +162,13 @@ class HomeScreen extends StatelessWidget {
                                 childCurrent: HomeScreen(),
                                 type: PageTransitionType.bottomToTop,
                                 alignment: Alignment.topCenter,
-                                child: const Details(),
+                                child: Details(),
                               ),);
                           },
                           child: Container(
                               height: 65.h,
                               decoration: BoxDecoration(
-                                  color: ColorStyles.brown,
+                                  color: ColorStyles.grey,
                                   borderRadius: BorderRadius.circular(10.r)),
                               child: CustomListTile(
                                 countryName: countryName[index],
@@ -112,6 +196,39 @@ class HomeScreen extends StatelessWidget {
 
     return flag;
   }
+  // void _showModal(BuildContext context) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return Dialog(
+  //           child: Container(
+  //             decoration: BoxDecoration(
+  //                 borderRadius: BorderRadius.circular(20.r)
+  //             ),
+  //             height: MediaQuery.of(context).size.height - 120,
+  //             child: OpenStreetMapSearchAndPick(
+  //               hintText: 'الموقع',
+  //               center: LatLong(latitude, longitude),
+  //               buttonColor: ColorStyles.green,
+  //               locationPinIconColor: ColorStyles.green,
+  //               buttonText: 'تـأكيد الموقع',
+  //               locationPinTextStyle:
+  //               const TextStyle(color: ColorStyles.brown),
+  //               locationPinText: 'الموقع',
+  //               onPicked: (pickedData) {
+  //                 Navigator.pop(context);
+  //                 setState(() {
+  //                   List data = pickedData.address.values.toList();
+  //                   locationAddress = data.toString();
+  //                   latitude = pickedData.latLong.latitude;
+  //                   longitude = pickedData.latLong.longitude;
+  //                 });
+  //               },
+  //             ),
+  //           ),
+  //         );
+  //       });
+  // }
 }
 
 class CustomListTile extends StatelessWidget {
@@ -133,25 +250,23 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 8.0.h),
+      padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+
         children: [
-          Text(flag),
+          Text(flag, style: const TextStyle(fontSize: 25),),
           SizedBox(
             width: 8.w,
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 countryName,
                 style: TextStyle(
                     fontFamily: 'Tajawal',
                     fontSize: 20.sp,
-                    color: ColorStyles.background,
+                    color: ColorStyles.darkBrown,
                     fontWeight: FontWeight.bold),
               ),
               Text(
@@ -159,11 +274,11 @@ class CustomListTile extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Tajawal',
                     fontSize: 15.sp,
-                    color: ColorStyles.red),
+                    color: ColorStyles.darkBrown),
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -173,7 +288,7 @@ class CustomListTile extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Tajawal',
                     fontSize: 20.sp,
-                    color: ColorStyles.background,
+                    color: ColorStyles.red,
                     fontWeight: FontWeight.bold),
               ),
               Text(
@@ -182,12 +297,13 @@ class CustomListTile extends StatelessWidget {
                     fontFamily: 'Tajawal',
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w600,
-                    color: ColorStyles.background),
+                    color: ColorStyles.darkBrown),
               ),
             ],
           ),
         ],
       ),
     );
+
   }
 }

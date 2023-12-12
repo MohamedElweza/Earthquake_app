@@ -27,7 +27,6 @@ class CustomOnBoardingScreen extends StatelessWidget {
           SizedBox(width: 95.w,height: 40.h, child: ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)), backgroundColor: Colors.red, ), child: Text('Next', style:TextStyle(color: Colors.white, fontFamily: 'Tajawal',fontWeight: FontWeight.bold, fontSize: 20.sp) ),)),
           SizedBox(height: 30.h,),
           Image.asset(image),
-         
         ],
       ),
     );
