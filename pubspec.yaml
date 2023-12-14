@@ -1,4 +1,4 @@
-name: earthquake
+name: magnaquake
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,8 +40,9 @@ dependencies:
   http:
   path:
   geolocator: ^10.1.0
-  open_street_map_search_and_pick: ^0.1.0
   fluttertoast: ^8.2.2
+
+
 
 dev_dependencies:
   flutter_test:
@@ -100,9 +101,9 @@ flutter:
            - asset: assets/fonts/Tajawal-Regular.ttf
              weight: 400
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+     - family: SplashName
+       fonts:
+         - asset: assets/fonts/Caveat-Bold.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
