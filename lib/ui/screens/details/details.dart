@@ -1,12 +1,11 @@
-import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import '../../component/progress_dialpg.dart';
 import '../../component/toast.dart';
+import '../../utils/styles/color_styles.dart';
 
 class Details extends StatefulWidget {
    Details({super.key});
@@ -23,9 +22,9 @@ class _DetailsState extends State<Details> {
 
     return SafeArea(
         child: Scaffold(
-      backgroundColor:  ColorStyles.green,
+      backgroundColor:  ColorStyles.background,
       appBar: AppBar(
-        backgroundColor: ColorStyles.green,
+        backgroundColor: ColorStyles.background,
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
@@ -41,7 +40,8 @@ class _DetailsState extends State<Details> {
             _showDialog(context);
           }, icon: const Icon(Icons.read_more,color: Colors.white,))
         ],
-        title: Text('Earthquake', style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, fontFamily: 'Tajawal', color: ColorStyles.brown),),
+        title: Text('Details',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, fontFamily: 'Tajawal', color: ColorStyles.brown),),
       ),
           body: SingleChildScrollView(
             child: Column(
@@ -85,7 +85,7 @@ class _DetailsState extends State<Details> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: ColorStyles.green,
+          backgroundColor: ColorStyles.white,
           shadowColor: Colors.white12,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0.r),
@@ -103,7 +103,7 @@ class _DetailsState extends State<Details> {
                 SizedBox(height: 7.h,),
                 SizedBox(height: 2.h, child: Container(color: ColorStyles.white,)),
                 SizedBox(height: 10.h,),
-                Text('# Protecting Yourself During an Earthquake:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, fontFamily: 'Tajawal', color: ColorStyles.lightRed2),),
+                Text('# Protecting Yourself During an Earthquake:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, fontFamily: 'Tajawal', color: ColorStyles.red),),
                 SizedBox(height: 7.h,),
                 content('Drop, Cover, and Hold On:' , 'Drop to the ground, take cover under a sturdy piece of furniture, and hold on until the shaking stops.'),
                 SizedBox(height: 7.h,),
@@ -118,7 +118,7 @@ class _DetailsState extends State<Details> {
                 SizedBox(
                     height: 2.h, child: Container(color: ColorStyles.white,)),
                 SizedBox(height: 7.h,),
-                Text('# Before an Earthquake:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, fontFamily: 'Tajawal',color: ColorStyles.lightRed2 ),),
+                Text('# Before an Earthquake:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, fontFamily: 'Tajawal',color: ColorStyles.red ),),
                 SizedBox(height: 10.h,),
                 content('Secure Heavy Furniture:' , 'Anchor heavy furniture and appliances to the walls to prevent them from falling during an earthquake.'),
                 SizedBox(height: 7.h,),
@@ -130,7 +130,7 @@ class _DetailsState extends State<Details> {
                 SizedBox(height: 7.h,),
                 SizedBox(height: 2.h, child: Container(color: ColorStyles.white,)),
                 SizedBox(height: 10.h,),
-                Text('# After an Earthquake:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, fontFamily: 'Tajawal', color: ColorStyles.lightRed2),),
+                Text('# After an Earthquake:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, fontFamily: 'Tajawal', color: ColorStyles.red),),
                 SizedBox(height: 7.h,),
                 content('Check for Injuries:' , 'Check yourself and others for injuries. Provide first aid if needed.'),
                 SizedBox(height: 7.h,),
@@ -140,7 +140,7 @@ class _DetailsState extends State<Details> {
                 SizedBox(height: 7.h,),
                 content('Inspect Your Surroundings:' , 'Check for hazards in your surroundings, like gas leaks or damaged electrical wires. Be cautious.'),
                 SizedBox(height: 15.h,),
-                Text('* Remember, the key is to stay calm, have a plan, and be prepared. Regular drills and simple safety measures can make a significant difference in protecting yourself and others during an earthquake.', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp, fontFamily: 'Tajawal', color: ColorStyles.red),),
+                Text('* Remember, the key is to stay calm, have a plan, and be prepared. Regular drills and simple safety measures can make a significant difference in protecting yourself and others during an earthquake.', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp, fontFamily: 'Tajawal', color: ColorStyles.background),),
 
               ],
             ),
@@ -154,9 +154,9 @@ class _DetailsState extends State<Details> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(address, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp, fontFamily: 'Tajawal', color: ColorStyles.lightRed2),),
+                  Text(address, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp, fontFamily: 'Tajawal', color: ColorStyles.darkBrown),),
                   SizedBox(height: 5.h,),
-                  Text(response, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Tajawal', color: ColorStyles.white),),
+                  Text(response, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp, fontFamily: 'Tajawal', color: ColorStyles.brown),),
                 ],
               );
   }

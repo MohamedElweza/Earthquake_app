@@ -1,6 +1,7 @@
-import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../utils/styles/color_styles.dart';
 
 class CustomToast {
   static darkToast({

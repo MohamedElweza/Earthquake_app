@@ -1,9 +1,10 @@
-import 'package:earthquake/ui/component/indicator.dart';
-import 'package:earthquake/ui/screens/home/home_screen.dart';
-import 'package:earthquake/ui/utils/styles/color_styles.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../component/custom_onBoarding_screen.dart';
+import '../../component/indicator.dart';
+import '../../utils/styles/color_styles.dart';
+import '../home/home_screen.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -50,7 +51,7 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorStyles.green,
+      backgroundColor: ColorStyles.background,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -105,7 +106,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       child: Center(
                         child: Icon(
                           Icons.arrow_forward,
-                          color: ColorStyles.green,
+                          color: ColorStyles.white,
                           size: 30.r,
                         ),
                       )),

@@ -1,10 +1,8 @@
-
-import 'package:earthquake/ui/screens/details/details.dart';
-import 'package:earthquake/ui/screens/onboarding/onboarding.dart';
-import 'package:earthquake/ui/screens/splash/splash.dart';
-import 'package:earthquake/ui/utils/styles/color_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magnaquake/ui/screens/home/home_screen.dart';
+import 'package:magnaquake/ui/screens/onboarding/onboarding.dart';
+import 'package:magnaquake/ui/screens/splash/splash.dart';
 
 void main() {
   runApp(const MyApp());

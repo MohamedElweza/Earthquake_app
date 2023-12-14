@@ -1,5 +1,4 @@
-import 'package:earthquake/ui/screens/details/details.dart';
-import 'package:earthquake/ui/utils/styles/color_styles.dart';
+
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:geolocator/geolocator.dart';
 // import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import 'package:page_transition/page_transition.dart';
+
+import '../../utils/styles/color_styles.dart';
+import '../details/details.dart';
 
 // import '../../component/progress_dialpg.dart';
 // import '../../component/toast.dart';
@@ -59,23 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
     String flag = generateCountryFlag();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorStyles.green,
+        backgroundColor: ColorStyles.background,
         appBar: AppBar(
-          backgroundColor: ColorStyles.green,
+          backgroundColor: ColorStyles.background ,
           centerTitle: true,
           elevation: 0,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-              )),
+          leading: Image.asset('assets/images/logo.png', scale: 5,),
           actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.menu))],
           title: Text(
             'Earthquake',
             style: TextStyle(
-                fontSize: 24.sp,
+                fontSize: 26.sp,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Tajawal',
                 color: ColorStyles.brown),
