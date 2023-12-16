@@ -2,6 +2,8 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magnaquake/data/api/models/main_data.dart';
+import 'package:magnaquake/data/api/request/api_request.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:geolocator/geolocator.dart';
 // import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
@@ -76,116 +78,131 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontFamily: 'Tajawal',
                 color: ColorStyles.brown),
           ),
+       
         ),
-        body: SingleChildScrollView(
-          controller: scrollController,
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 250.h,
-                  // child: InkWell(
-                  //   child: Text(
-                  //     locationAddress,
-                  //     style: TextStyle(color: ColorStyles.white),
-                  //   ),
-                  //   onTap: () async {
-                  //     try {
-                  //       {
-                  //         bool services =
-                  //         await Geolocator.isLocationServiceEnabled();
-                  //         if (services == false) {
-                  //           CustomToast.lightToast(
-                  //               msg: "يرجى تفعيل خدمة الموقع",
-                  //               gravity: ToastGravity.CENTER);
-                  //         } else {
-                  //           LocationPermission permission =
-                  //           await Geolocator.checkPermission();
-                  //           if (permission == LocationPermission.denied ||
-                  //               permission ==
-                  //                   LocationPermission.deniedForever) {
-                  //             permission =
-                  //             await Geolocator.requestPermission();
-                  //           }
-                  //           if (permission == LocationPermission.always ||
-                  //               permission == LocationPermission.whileInUse) {
-                  //             if (context.mounted) {
-                  //               ShowProgressIndicator(context);
-                  //             }
-                  //             await getLatAndLng().then((value) {
-                  //               Navigator.pop(context);
-                  //               latitude = value.latitude;
-                  //               longitude = value.longitude;
-                  //               _showModal(context);
-                  //             });
-                  //           }
-                  //         }
-                  //       }
-                  //     } catch(e){
-                  //       if (kDebugMode) {
-                  //         print(e.toString());
-                  //       }
-                  //     }
-                  //   },
-                  // ),
-                ),
-                Text(
-                  'Recent\nEarthquakes',
-                  style: TextStyle(
-                      fontSize: 35.sp,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Tajawal',
-                      color: ColorStyles.brown),
-                ),
-                ListView.builder(
-                    controller: scrollController,
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: countryName.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                              PageTransition(
-                                childCurrent: HomeScreen(),
-                                type: PageTransitionType.bottomToTop,
-                                alignment: Alignment.topCenter,
-                                child: Details(),
-                              ),);
-                          },
-                          child: Container(
-                              height: 65.h,
-                              decoration: BoxDecoration(
-                                  color: ColorStyles.grey,
-                                  borderRadius: BorderRadius.circular(10.r)),
-                              child: CustomListTile(
-                                countryName: countryName[index],
-                                cityName: cityName[index],
-                                time: 'Two hours ago',
-                                scale: 3.1,
-                                flag: flag,
-                              )),
-                        ),
-                      );
-                    }),
-              ],
+
+        body:FutureBuilder <Autogenerated>(
+            future: EarthquakeRequests.GetAllEarthquakes() ,
+           builder: (context, snapshot)
+           {
+             if (snapshot.hasData) {
+              Autogenerated model = snapshot.data!;
+          return SingleChildScrollView(
+            controller: scrollController,
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 250.h,
+                    // child: InkWell(
+                    //   child: Text(
+                    //     locationAddress,
+                    //     style: TextStyle(color: ColorStyles.white),
+                    //   ),
+                    //   onTap: () async {
+                    //     try {
+                    //       {
+                    //         bool services =
+                    //         await Geolocator.isLocationServiceEnabled();
+                    //         if (services == false) {
+                    //           CustomToast.lightToast(
+                    //               msg: "يرجى تفعيل خدمة الموقع",
+                    //               gravity: ToastGravity.CENTER);
+                    //         } else {
+                    //           LocationPermission permission =
+                    //           await Geolocator.checkPermission();
+                    //           if (permission == LocationPermission.denied ||
+                    //               permission ==
+                    //                   LocationPermission.deniedForever) {
+                    //             permission =
+                    //             await Geolocator.requestPermission();
+                    //           }
+                    //           if (permission == LocationPermission.always ||
+                    //               permission == LocationPermission.whileInUse) {
+                    //             if (context.mounted) {
+                    //               ShowProgressIndicator(context);
+                    //             }
+                    //             await getLatAndLng().then((value) {
+                    //               Navigator.pop(context);
+                    //               latitude = value.latitude;
+                    //               longitude = value.longitude;
+                    //               _showModal(context);
+                    //             });
+                    //           }
+                    //         }
+                    //       }
+                    //     } catch(e){
+                    //       if (kDebugMode) {
+                    //         print(e.toString());
+                    //       }
+                    //     }
+                    //   },
+                    // ),
+                  ),
+                  Text(
+                    'Recent\nEarthquakes',
+                    style: TextStyle(
+                        fontSize: 35.sp,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Tajawal',
+                        color: ColorStyles.brown),
+                  ),
+                  ListView.builder(
+                      controller: scrollController,
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: model.data?.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                PageTransition(
+                                  childCurrent: HomeScreen(),
+                                  type: PageTransitionType.bottomToTop,
+                                  alignment: Alignment.topCenter,
+                                  child: Details(),
+                                ),);
+                            },
+                            child: Container(
+                                height: 65.h,
+                                decoration: BoxDecoration(
+                                    color: ColorStyles.grey,
+                                    borderRadius: BorderRadius.circular(10.r)),
+                                child: CustomListTile(
+                                  countryName: model.data![index].country.toString(),
+                                  cityName:model.data![index].city.toString() ,
+                                  time: model.data![index].date.toString(),
+                                  scale: model.data![index].magnitude.toString(),
+                                  flag: flag,
+                                )),
+                          ),
+                        );
+                      }),
+                ],
+              ),
             ),
-          ),
+          );
+
+           }
+            else  {
+                  return CircularProgressIndicator();
+                }
+           }
         ),
       ),
     );
   }
 
   String generateCountryFlag() {
-    String countryCode = 'eg';
+    String countryCode = 'us';
 
     String flag = countryCode.toUpperCase().replaceAllMapped(RegExp(r'[A-Z]'),
         (match) => String.fromCharCode(match.group(0)!.codeUnitAt(0) + 127397));
@@ -241,7 +258,7 @@ class CustomListTile extends StatelessWidget {
   final String cityName;
   final String flag;
   final String time;
-  final double scale;
+  final String scale;
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +278,7 @@ class CustomListTile extends StatelessWidget {
                 countryName,
                 style: TextStyle(
                     fontFamily: 'Tajawal',
-                    fontSize: 20.sp,
+                    fontSize: 15.sp,
                     color: ColorStyles.darkBrown,
                     fontWeight: FontWeight.bold),
               ),
@@ -283,7 +300,7 @@ class CustomListTile extends StatelessWidget {
                 '$scale',
                 style: TextStyle(
                     fontFamily: 'Tajawal',
-                    fontSize: 20.sp,
+                    fontSize: 15.sp,
                     color: ColorStyles.red,
                     fontWeight: FontWeight.bold),
               ),
@@ -291,7 +308,7 @@ class CustomListTile extends StatelessWidget {
                 time,
                 style: TextStyle(
                     fontFamily: 'Tajawal',
-                    fontSize: 15.sp,
+                    fontSize: 13.2.sp,
                     fontWeight: FontWeight.w600,
                     color: ColorStyles.darkBrown),
               ),
