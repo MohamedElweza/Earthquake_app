@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../component/map.dart';
 import '../../component/progress_dialpg.dart';
 import '../../component/toast.dart';
 import '../../utils/styles/color_styles.dart';
@@ -47,7 +48,15 @@ class _DetailsState extends State<Details> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 250.h,),
+
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30.r),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+                    height: 300.h,
+                    child: MapScreen(latitude: 30.0444, longitude: 31.2357),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 12.h),
                   child: Row(
