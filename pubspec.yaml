@@ -41,6 +41,12 @@ dependencies:
   path:
   geolocator: ^10.1.0
   fluttertoast: ^8.2.2
+  flutter_map:
+  latlong2:
+  shimmer:
+  open_street_map_search_and_pick:
+  provider:
+  animated_text_kit:
 
 
 
