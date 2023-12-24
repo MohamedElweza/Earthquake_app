@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magnaquake/ui/screens/home/home_screen.dart';
@@ -38,20 +39,18 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     _slideAnimation = Tween<Offset>(begin: Offset(-1.5.w, 0.0.h), end: Offset(0.0.w, 0.0.h)).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: const Interval(0.5, 1.0), // Slide in from the left during the second half (2 seconds)
+        curve: const Interval(0.5, 1.0),
       ),
     );
 
-    // Start the animation after the widget is built
     _animationController.forward();
 
-    // Navigate to the next screen after the animation completes
-    Timer(const Duration(milliseconds: 4000), () {
+    Timer(const Duration(milliseconds: 4500), () {
       Navigator.of(context).pushReplacement(
         PageTransition(
           childCurrent: const SplashScreen(),
           type: PageTransitionType.fade,
-          child: const HomeScreen(),
+          child: const OnBoarding(),
         ),
       );
     });
@@ -60,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorStyles.background,
+      backgroundColor: ColorStyles.white,
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
@@ -69,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/logo.png', // Replace with your splash image path
+                'assets/images/logo5.png', // Replace with your splash image path
                 width: 350.0.w,
                 height: 200.h,
               ),
@@ -77,14 +76,23 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 position: _slideAnimation,
                 child: AnimatedContainer(
                   duration: const Duration(seconds: 3),
-                  child: Text(
-                    'MAGNAQUAKE',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 50.sp,
-                      fontFamily: 'SplashName',
-                      color: ColorStyles.white,
-                    ),
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      ColorizeAnimatedText(
+                        'MAGNAQUAKE',
+                        textStyle: TextStyle(
+                          fontSize: 50.0.sp,
+                          fontFamily: "SplashName",
+                          fontWeight: FontWeight.bold,
+                        ),
+                        colors: [
+                          ColorStyles.red,
+                          ColorStyles.brown,
+                          Colors.deepOrangeAccent,
+                          ColorStyles.background,
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
