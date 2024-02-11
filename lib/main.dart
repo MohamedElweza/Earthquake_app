@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magnaquake/ui/screens/authentication/login_screen.dart';
+import 'package:magnaquake/ui/screens/authentication/sign_up_screen.dart';
 import 'package:magnaquake/ui/screens/details/details.dart';
 import 'package:magnaquake/ui/screens/home/home_screen.dart';
 import 'package:magnaquake/ui/screens/onboarding/onboarding.dart';
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
               child: child!);
         },
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home: SplashScreen(),
       );
     }
     );
