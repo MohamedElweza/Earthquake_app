@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             centerTitle: true,
             elevation: 0,
             title: Text(
-              'Sign In ',
+              'Sign Up ',
               style: TextStyle(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
