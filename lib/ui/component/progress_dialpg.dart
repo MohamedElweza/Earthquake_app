@@ -23,7 +23,7 @@ class ShowProgressIndicator {
               width: 50.h,
               height: 50.h,
               child: const CircularProgressIndicator(
-                color: ColorStyles.green,
+                color: ColorStyles.red,
               ),
             ),
           ],

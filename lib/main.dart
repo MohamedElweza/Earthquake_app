@@ -6,14 +6,13 @@ import 'package:magnaquake/ui/screens/onboarding/onboarding.dart';
 import 'package:magnaquake/ui/screens/splash/splash.dart';
 import 'package:provider/provider.dart';
 
+import 'controllers/ChatGPT/ChatGPT.dart';
+import 'controllers/ChatGPT/Chat_provider.dart';
 import 'controllers/providers.dart';
 
 void main() {
   runApp( MultiProvider(
     providers: [
-      ChangeNotifierProvider(
-        create: (context) => HomeProvider(),
-      ),
       ChangeNotifierProvider(
         create: (context) => MagnitudeTypesDropdownState(),
       ),
@@ -22,6 +21,12 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => LocationProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ModelsProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => ChatProvider(),
       ),
       ],
     child: const MyApp(),
@@ -35,7 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize:  const Size(390, 844),
+      designSize:   Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
     builder: (context, child) {
       return MaterialApp(
         builder: (context, child) {
@@ -44,7 +49,7 @@ class MyApp extends StatelessWidget {
               child: child!);
         },
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home: const HomeScreen(),
       );
     }
     );

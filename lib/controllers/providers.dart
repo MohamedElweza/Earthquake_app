@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
 
-class HomeProvider with ChangeNotifier {
-  bool _aiDialogShown = false;
-
-  bool get aiDialogShown => _aiDialogShown;
-
-  set aiDialogShown(bool value) {
-    _aiDialogShown = value;
-    notifyListeners();
-  }
-}
 class MagnitudeTypesDropdownState with ChangeNotifier {
   String _selectedOption = 'mwc';
 
