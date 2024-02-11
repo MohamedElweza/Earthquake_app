@@ -20,11 +20,16 @@ class _LoginScreenState extends State<LogInScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorStyles.white,
+        backgroundColor: ColorStyles.background,
         appBar: AppBar(
           backgroundColor: ColorStyles.background,
           centerTitle: true,
           elevation: 0,
+           leading: Image.asset(
+            'assets/images/logo3.png',
+            height: 25.h,
+            width: 25.w,
+          ),
           title: Text(
             'Sign In ',
             style: TextStyle(
@@ -85,7 +90,7 @@ class _LoginScreenState extends State<LogInScreen> {
                           formKey.currentState!.validate();
                         },
                         color: ColorStyles.brown,
-                        hintText: "password",
+                        hintText: "Password",
                         prefixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -128,7 +133,7 @@ class _LoginScreenState extends State<LogInScreen> {
                           style: TextStyle(
                             fontFamily: 'Tajawal',
                             fontWeight: FontWeight.bold,
-                            fontSize: 17.sp,
+                            fontSize: 22.sp,
                             color: ColorStyles.white,
                           ),
                         ),

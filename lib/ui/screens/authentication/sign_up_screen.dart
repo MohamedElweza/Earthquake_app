@@ -26,11 +26,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorStyles.white,
+        backgroundColor: ColorStyles.background,
         appBar: AppBar(
             backgroundColor: ColorStyles.background,
             centerTitle: true,
             elevation: 0,
+             leading: Image.asset(
+            'assets/images/logo3.png',
+            height: 25.h,
+            width: 25.w,
+          ),
             title: Text(
               'Sign Up ',
               style: TextStyle(
@@ -193,7 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: TextStyle(
                           fontFamily: 'Tajawal',
                           fontWeight: FontWeight.bold,
-                          fontSize: 17.sp,
+                          fontSize: 22.sp,
                           color: ColorStyles.white,
                         ),
                       ),

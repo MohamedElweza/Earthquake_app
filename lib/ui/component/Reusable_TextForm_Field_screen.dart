@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/styles/color_styles.dart';
 
-
 class ReusableTextFormField extends StatelessWidget {
   // final String? labelText;
   final String? hintText;
@@ -38,14 +37,22 @@ class ReusableTextFormField extends StatelessWidget {
       controller: controller,
       onChanged: onChange,
       keyboardType: keyboardType,
-      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black),
+      style: Theme.of(context)
+          .textTheme
+          .bodyLarge
+          ?.copyWith(color: ColorStyles.white),
       cursorColor: Colors.black,
       cursorWidth: 1.5,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         fillColor: ColorStyles.darkBrown,
         filled: true,
-        errorStyle: Theme.of(context).textTheme.labelMedium,
+        errorStyle: TextStyle(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Tajawal',
+          color: ColorStyles.red,
+        ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(8.0.r),
@@ -71,7 +78,10 @@ class ReusableTextFormField extends StatelessWidget {
         contentPadding:
             EdgeInsets.symmetric(vertical: 16.0.h, horizontal: 16.0.w),
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: ColorStyles.brown),
+        hintStyle: Theme.of(context)
+            .textTheme
+            .bodyMedium
+            ?.copyWith(color: ColorStyles.white),
         prefixIcon: prefixIcon,
         focusColor: ColorStyles.brown,
         suffixIcon: suffixIcon,
